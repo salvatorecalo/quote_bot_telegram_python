@@ -9,15 +9,15 @@ import pytz
 # I import flask just because leapcell is looking for a web server to run the bot :(
 from flask import Flask
 
-app = Flask(__name__)
+web_server = Flask(__name__)
 
-@app.route('/')
+@web_server.route('/')
 def home():
     return "Hello, this is the home page of the bot!"
 
 def run_bot():
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    web_server.run(host="0.0.0.0", port=port)
 
 Thread(target=run_bot).start()
 
