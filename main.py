@@ -16,7 +16,7 @@ def home():
     return "Hello, this is the home page of the bot!"
 
 def run_bot():
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 8080))
     web_server.run(host="0.0.0.0", port=port)
 
 Thread(target=run_bot).start()
