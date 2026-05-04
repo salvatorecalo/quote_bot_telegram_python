@@ -1,6 +1,7 @@
 from telegram.ext import ContextTypes
 from .get_all_user import get_all_users
 from random import randint
+from .setup_logger import setup_logger
 
 QUOTES = [
     "So che ce la puoi fare campione ",
@@ -9,8 +10,11 @@ QUOTES = [
     "La tua forza interiore è più grande di qualsiasi ostacolo.",
     "Credi in te stesso e tutto sarà possibile.",
 ]
+logger = setup_logger(__name__)
+
 async def send_daily_motivation(context: ContextTypes.DEFAULT_TYPE):
     """Sends a daily motivational quote to the user."""
+    logger.info("Sending daily motivation")
     random_index = randint(0, len(QUOTES) - 1)
     all_users = get_all_users()
     for user_id in all_users:

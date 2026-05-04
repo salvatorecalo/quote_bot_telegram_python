@@ -6,6 +6,7 @@ from utils.setup_logger import setup_logger
 logger = setup_logger(__name__)
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info("Start command received")
     if not update or not update.effective_chat or not update.effective_user:
         logger.error("Invalid update object received in start_command.")
         return
