@@ -15,6 +15,11 @@ web_server = Flask(__name__)
 def home():
     return "Hello, this is the home page of the bot!"
 
+# this route is used only by leapcell to check if the bot is alive
+@web_server.route("/kaithhealthcheck")
+def health_check():
+    return "OK", 200
+
 def run_bot():
     port = int(os.environ.get("PORT", 8080))
     web_server.run(host="0.0.0.0", port=port)
