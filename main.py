@@ -23,8 +23,6 @@ def health_check():
 def run_bot():
     web_server.run(host="0.0.0.0", port=8080)
 
-Thread(target=run_bot).start()
-
 # Here we put our basic bot stuff
 load_dotenv()
 logger = setup_logger(__name__)
@@ -49,4 +47,6 @@ def main():
         logger.error(f"Error occurred while building the application: {e}")
 
 if __name__ == "__main__":
+    # I moved it here because I want to run it only one time, also if it was in the previous position in was run only one time because you cannot import main n other files
+    Thread(target=run_bot).start()
     main()
